@@ -5,5 +5,5 @@ class College
   # override mongoid BSON ids
   field :_id, as: :college_id, type: Integer, default: -> { College.count + 1 }
 
-  has_many :exams
+  has_many :exams, autosave: true
 end

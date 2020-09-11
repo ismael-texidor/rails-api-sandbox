@@ -4,8 +4,7 @@ class Exam
   field :name, type: String
   field :_id, as: :exam_id, type: Integer, default: -> { Exam.count + 1 }
 
-  has_many :users
-  belongs_to :college
-
-
+  has_and_belongs_to_many :users
+  has_many :exam_windows, autosave: true
+  belongs_to :college 
 end

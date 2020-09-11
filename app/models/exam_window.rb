@@ -5,5 +5,5 @@ class ExamWindow
   field :start_time, type: DateTime
   field :end_time, type: DateTime
   
-  belongs_to :users
+  belongs_to :exams
 end
