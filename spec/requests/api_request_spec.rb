@@ -12,10 +12,10 @@ RSpec.describe "Apis", type: :request do
   }
 
   describe "Get test_check" do
-    
+
     context "with valid parameters but no data" do
       it "returns 400 if any of the models are missing" do
-          get '/test/', params: valid_params
+          get '/test_checker/', params: valid_params
         expect(response).to have_http_status(:bad_request)
         expect(response.body).to include("Document(s) not found for class College")
       end
@@ -27,7 +27,7 @@ RSpec.describe "Apis", type: :request do
         college.save
       end
       it "returns 400 if any of the models are missing" do
-          get '/test/', params: valid_params
+          get '/test_checker/', params: valid_params
           
         expect(response).to have_http_status(:bad_request)
         expect(response.body).to include("exam_id not found")
