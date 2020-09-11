@@ -10,7 +10,7 @@
 
 * Don't forget to run bundle install
 
-* Database creation: using Mongodb Atlas Cloud see Database initialization
+* Database creation: using MongoDB Atlas Cloud see Database initialization
 
 * Test Data: there is already script in place that will run when the application starts. 
 
