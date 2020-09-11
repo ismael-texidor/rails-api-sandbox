@@ -28,7 +28,7 @@ class ApiController < ApplicationController
       unless user
         add_user = User.new({ first_name: first_name, last_name: last_name, phone_number: phone_number })
         add_user.save
-        exam << add_user
+        exam.users << add_user
         exam.save
       end
 
@@ -58,7 +58,7 @@ class ApiController < ApplicationController
     def log_successful_request
       ApiHelper.log_api_request('test_checker', params[:api], request.remote_ip, true)
     end
-    
+
     def log_failed_request
       ApiHelper.log_api_request('test_checker', params[:api], request.remote_ip, false)
     end

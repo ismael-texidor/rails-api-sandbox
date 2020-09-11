@@ -5,20 +5,17 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version: 2.6.3
 
-* System dependencies
+* System dependencies: Please isntall Webpacker, NodeJS, Rails and yarn to run this application.
 
-* Configuration
+* Install the following using the rails command: 
+* rails webpacker:install
+* rails generate rspec:install
 
-* Database creation
+* Database creation: There is already script in place that will run when the application starts. 
 
-* Database initialization
+* Database initialization: Insert the provided local_evn.yml in the config directory. 
 
-* How to run the test suite
+* How to run the test suite: bundle exec rspec
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
