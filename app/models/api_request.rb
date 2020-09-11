@@ -6,4 +6,5 @@ class ApiRequest
   field :request_params, type: String
   field :ip_address, type: String
   field :is_successful, type: Boolean
+  field :error_message, type: String
 end

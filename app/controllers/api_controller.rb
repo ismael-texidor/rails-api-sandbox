@@ -38,6 +38,7 @@ class ApiController < ApplicationController
       
       render json:'Success'.to_json, status: :ok
     rescue Exception => error
+      @error = error
       render json:error.to_json, status: :bad_request
     end
   end
@@ -51,6 +52,7 @@ class ApiController < ApplicationController
         permitted = params.require(:api).permit(:first_name, :last_name, :phone_number, :college_id, :exam_id, :start_time)
         ValidationHelper.type_check_validation(permitted)
       rescue Exception => error
+        @error = error
         render json:error.to_json, status: :bad_request
       end
     end
@@ -60,6 +62,6 @@ class ApiController < ApplicationController
     end
 
     def log_failed_request
-      ApiHelper.log_api_request('test_checker', params[:api], request.remote_ip, false)
+      ApiHelper.log_api_request('test_checker', params[:api], request.remote_ip, false, @error)
     end
 end
