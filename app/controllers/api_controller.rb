@@ -1,7 +1,9 @@
 class ApiController < ApplicationController
   before_action :validate, only: [:show]
+  after_action :log_successful_request, if: -> { response.successful? }
+  after_action :log_failed_request, unless: -> { response.successful? }
 
-  # GET /test/
+  # GET /test_checker/
   def show
     begin
       # Params have been validated let's assign them to variables.
@@ -51,5 +53,13 @@ class ApiController < ApplicationController
       rescue Exception => error
         render json:error.to_json, status: :bad_request
       end
+    end
+
+    def log_successful_request
+      ApiHelper.log_api_request('test_checker', params[:api], request.remote_ip, true)
+    end
+    
+    def log_failed_request
+      ApiHelper.log_api_request('test_checker', params[:api], request.remote_ip, false)
     end
 end
