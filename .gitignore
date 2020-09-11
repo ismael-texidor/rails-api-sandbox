@@ -12,7 +12,8 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
+/config/local_env.yml
+.vscode/launch.json
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
 !/tmp/pids/
