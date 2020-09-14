@@ -10,6 +10,8 @@ module SeedData
       exam_window.save
       exam.exam_windows << exam_window
       exam.users << user
+      exam1.exam_windows << exam_window
+      exam1.users << user
       exam.save
       exam1.save
       college.exams << exam

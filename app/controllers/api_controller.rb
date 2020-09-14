@@ -19,7 +19,7 @@ class ApiController < ApplicationController
       college = College.find(college_id)
       
       # check that the exam_id exists inside this college.
-      exam = college.exams.select { |exam| exam.exam_id == exam_id }.first
+      exam = college.exams.select { |exam| exam.exam_id == exam_id }.first || Exam.find(exam_id)
       raise 'exam_id not found' if exam.nil?
       
       # check that the user exist in the exam. 
@@ -33,7 +33,7 @@ class ApiController < ApplicationController
       end
 
       # check that the start_time falls withint the exam_window.
-      exam_window = exam.exam_windows.select { |exam_window| start_time.between?(exam_window.start_time, exam_window.end_time) }.any?
+      exam_window = exam.exam_windows.select { |exam_window| start_time.between?(exam_window.start_time, exam_window.end_time) }.any? 
       raise 'start_time is outside the exam window' unless exam_window
       
       render json:'Success'.to_json, status: :ok

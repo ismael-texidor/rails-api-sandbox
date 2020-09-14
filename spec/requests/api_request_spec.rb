@@ -21,16 +21,13 @@ RSpec.describe "Apis", type: :request do
       end
     end
 
-    context "with valid parameters but partial data" do
+    context "with valid parameters and valid data" do
       before :each do
-        college = College.new({name:'Test College'})
-        college.save
+        SeedData.create_data
       end
-      it "returns 400 if any of the models are missing" do
+      it "returns 200 if data models are valid" do
           get '/test_checker/', params: valid_params
-          
-        expect(response).to have_http_status(:bad_request)
-        expect(response.body).to include("exam_id not found")
+        expect(response).to have_http_status(:ok)
       end
     end
   end
