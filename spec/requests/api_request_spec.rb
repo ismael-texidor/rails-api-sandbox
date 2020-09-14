@@ -30,5 +30,17 @@ RSpec.describe "Apis", type: :request do
         expect(response).to have_http_status(:ok)
       end
     end
+
+    context "Test Performance" do
+      before :each do
+        SeedData.create_data
+      end
+      50.times { 
+      it "Set up ALL DATA call 50 times back to back!" do
+        get '/test_checker/', params: valid_params
+        expect(response).to have_http_status(:ok)
+      end
+      }
+    end
   end
 end
