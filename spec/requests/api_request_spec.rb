@@ -33,7 +33,9 @@ RSpec.describe "Apis", type: :request do
 
     context "Test Performance - Set up ALL DATA call 50 times back to back!" do
       before :each do
-        SeedData.create_data
+        TimeHelper.profile_block('Data Setup') do
+          SeedData.create_data
+        end
       end
       50.times.each do |num| 
         it "Call #{num + 1}" do
