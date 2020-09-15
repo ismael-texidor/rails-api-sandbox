@@ -18,3 +18,5 @@
 
 * How to run the test suite: bundle exec rspec
 
+* How do I run this application? rails s
+
